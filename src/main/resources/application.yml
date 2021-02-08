@@ -1,0 +1,16 @@
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate:
+      ddl-auto: update
+      show-sql: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pricelistscrubber
+    username: postgres
+    password: password
+
+
+pchub-data-url: https://sheets.googleapis.com//v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg

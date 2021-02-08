@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.johnsanchez.pricelistscrubber.pojo.PcHubRawData;
 
-@FeignClient(name="pchub-googlesheets", url = "https://sheets.googleapis.com")
-public interface PcHubDataService {
+@FeignClient(name="pchub-googlesheets", url = "${pchub-data-url}")
+public interface PcHubRawDataService {
 	
 	//curl 'https://sheets.googleapis.com/v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg' 
 	// -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0' 
@@ -18,8 +18,7 @@ public interface PcHubDataService {
 	// -H 'Cache-Control: max-age=0' 
 	// -H 'TE: Trailers'	
 	
-	@RequestMapping(value="/v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg",
-			headers = {"Origin=http://pchubpricelist.online",
+	@RequestMapping(headers = {"Origin=http://pchubpricelist.online",
 					"Referer=http://pchubpricelist.online/"})
 	public PcHubRawData getData();
 
