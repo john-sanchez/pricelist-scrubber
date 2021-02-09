@@ -1,4 +1,8 @@
 
+server:
+  servlet:
+    context-path: /api
+
 spring:
   jpa:
     properties:
@@ -8,8 +12,8 @@ spring:
       ddl-auto: update
       show-sql: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/pricelistscrubber
-    username: postgres
+    url: jdbc:h2:file:./pricelistscrubber
+    username: sa
     password: password
 
 

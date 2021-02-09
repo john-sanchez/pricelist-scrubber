@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Consumer;
 
 import org.slf4j.Logger;
@@ -70,6 +71,11 @@ public class PcHubDataService {
 			pcHubDataRepository.save(data);
 		}
 		
+	}
+	
+	@Transactional(readOnly=true)
+	public List<PcHubData> findLatest() {
+		return pcHubDataRepository.findLatest();
 	}
 	
 	private static void safely(String[] rawData, int index, Consumer<String> consumer) {
