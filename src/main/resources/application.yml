@@ -12,9 +12,9 @@ spring:
       ddl-auto: update
       show-sql: false
   datasource:
-    url: jdbc:h2:file:./pricelistscrubber
-    username: sa
-    password: password
+    url: ${DB_URL:jdbc:h2:file:./pricelistscrubber}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:password}
 
 
 pchub-data-url: https://sheets.googleapis.com//v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg

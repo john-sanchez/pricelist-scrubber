@@ -14,4 +14,6 @@ public interface PcHubDataRepository extends PagingAndSortingRepository<PcHubDat
 
 	@Query("from PcHubData where recordedDate = (select max(recordedDate) from PcHubData)")
 	public List<PcHubData> findLatest();
+	
+	public List<PcHubData> findBySkuOrderByRecordedDateAsc(String sku);
 }

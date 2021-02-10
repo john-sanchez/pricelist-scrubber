@@ -71,11 +71,18 @@ public class PcHubDataService {
 			pcHubDataRepository.save(data);
 		}
 		
+		LOGGER.info("Saved " + tableData.length + " records");
+		
 	}
 	
 	@Transactional(readOnly=true)
 	public List<PcHubData> findLatest() {
 		return pcHubDataRepository.findLatest();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<PcHubData> findBySkuOrderByRecordedDateAsc(String sku) {
+		return pcHubDataRepository.findBySkuOrderByRecordedDateAsc(sku);
 	}
 	
 	private static void safely(String[] rawData, int index, Consumer<String> consumer) {

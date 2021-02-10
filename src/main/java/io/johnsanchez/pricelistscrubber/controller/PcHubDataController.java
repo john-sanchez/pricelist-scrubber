@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.johnsanchez.pricelistscrubber.entities.PcHubData;
@@ -25,18 +26,12 @@ public class PcHubDataController {
 	
 	@RequestMapping("/latest-dt")
 	public Map<String, Object> latestForDataTable() {
-//		List<PcHubData> latest = pcHubDataService.findLatest();
-//		List<List<Object>> data = new ArrayList<List<Object>>();
-//		for (PcHubData phdata : latest) {
-//			List<Object> values = new ArrayList<Object>();
-//			values.add(phdata.getCategory());
-//			values.add(phdata.getBrand() + " " + phdata.getProperties() + " " + phdata.getDescription());
-//			values.add(phdata.getCashPrice().toString());
-//			values.add(phdata.getAvailability());
-//			values.add(phdata.getSku());
-//			data.add(values);
-//		}
 		return Collections.singletonMap("data", pcHubDataService.findLatest());
+	}
+	
+	@RequestMapping
+	public List<PcHubData> findBySku(@RequestParam("sku") String sku) {
+		return pcHubDataService.findBySkuOrderByRecordedDateAsc(sku);
 	}
 	
 	@RequestMapping("/fetch")
