@@ -17,4 +17,4 @@ spring:
     password: ${DB_PASSWORD:password}
 
 
-pchub-data-url: https://sheets.googleapis.com//v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg
+pchub-data-url: https://sheets.googleapis.com/v4/spreadsheets/10bTlhxgBCCsFCD3wvGMvHzDqKOOFqR-iFpiJFtTHirA/values/PLs!A8:U?key=AIzaSyCIdLw59N8o9vLSdb20BVwHzRAcyYoyewg

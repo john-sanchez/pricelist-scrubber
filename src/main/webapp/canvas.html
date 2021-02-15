@@ -22,14 +22,71 @@
 <body>
 
 <div id="nav"></div>
+
 <div class="container">
-	<div class="row" id="widget-row">
-	</div>
+	<h1>System builder</h1>
+	<form id="form">
+	</form>
 </div>
+
+<div class="modal" id="chart-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title-price-chart">Price Chart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div id="modal-body-dscp"></div>
+		<table id="mytable" class="display">
+		    <thead>
+		        <tr>
+		            <th>Category</th>
+		            <th>Description</th>
+					<th>Price</th>
+					<th>Availability</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    </tbody>
+		</table>
+      	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-to-watchlist">Add to Watchlist</button>
+        <button type="button" class="btn btn-primary" id="remove-from-watchlist">Remove from Watchlist</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		renderDashboard();
-	    $("#nav").html(getNav(0));
+	    $("#nav").html(getNav(2));
+	    
+	    var components = [
+	    	{label: 'CPU', filter: 'Processor'},
+	    	{label: 'Motherboard', filter: 'Motherboard'},
+	    	{label: 'GPU', filter: 'GPU'},
+	    	{label: 'RAM', filter: 'RAM'},
+	    	{label: 'HDD', filter: 'HDD'},
+	    	{label: 'SSD', filter: 'SSD'},
+	    	{label: 'Case', filter: 'Case'},
+	    	{label: 'PSU', filter: 'PSU'},
+	    	{label: 'Monitor', filter: 'Monitor'},
+	    ];
+	    
+	    for (var i = 0; i<components.length; i++) {
+	    	var comp = components[i];
+	    	var formgroup = $('<div class="form-group row"></div>');
+	    	$('<label class="col-sm-2 col-form-label"></label>').text(comp.label).appendTo(formgroup);
+	    	var divcont = $('<div class="col-sm-10"></div>').appendTo(formgroup);
+	    	var addbtn = $('<button type="submit" class="btn btn-primary mb-2"></button>').text('Add ' + comp.label).appendTo(divcont);
+	    	formgroup.appendTo('#form');
+	    }
 	})
 </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
